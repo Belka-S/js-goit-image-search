@@ -2,30 +2,24 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>title</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scroll</title>
 
-  <link rel="stylesheet" href="./sass/index.scss" />
-  <script src="./index.js"></script>
 </head>
 
-<body>
-  <!-- Header -->
-  <section class="header">
-    <div class="container">
-      <div class="header__wrap">
-        <include src="./partials/layouts/header.html"></include>
-      </div>
-    </div>
-  </section>
-  <!-- main -->
-  <main>
-    <!-- Hero -->
-    <include src="./partials/pages/main/hero.html"></include>
-  </main>
-  <!--  Footer -->
-  <include src="./partials/layouts/footer.html"></include>
+<body class="container">
+  <!-- search-form -->
+  <form class="search-form" id="search-form">
+    <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+    <button class="button" type="submit">Search</button>
+  </form>
+  <!-- gallery -->
+  <div class="gallery">
+    <!-- Image cards -->
+  </div>
+  <script src="./index.js" type="module"></script>
 </body>
 
 </html>

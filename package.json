@@ -1,11 +1,11 @@
 {
-  "name": "parcel_start_kit",
+  "name": "goit-js-hw-11",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://belka-s.github.io/parcel_start_kit",
+  "homepage": "https://belka-s.github.io/goit-js-hw-11",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel_start_kit/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-11/"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,15 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "axios": "^1.3.4",
+    "lodash.debounce": "^4.0.8",
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6",
+    "simplelightbox": "^2.12.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
+    "buffer": "^5.7.1",
     "parcel": "^2.8.3",
     "parcel-plugin-custom-dist-structure": "^1.1.18",
     "parcel-reporter-clean-dist": "^1.0.4",

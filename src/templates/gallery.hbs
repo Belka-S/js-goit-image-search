@@ -1,0 +1,37 @@
+{{! createMarkup Function }}
+<div class='gallery__item'>
+  <a class='gallery__link' href='{{largeImageURL}}'>
+    <img
+      class='gallery__image'
+      src='{{webformatURL}}'
+      alt='{{tags}}'
+      loading='lazy'
+    />
+    <span class='is-hidden'>Likes
+      {{likes}}
+      - - - Views
+      {{views}}
+      - - - Comments
+      {{comments}}
+      - - - Downloads
+      {{downloads}}</span>
+  </a>
+  <div class='info'>
+    <span alt='qwe' class='info__item'>
+      <b>Likes</b>
+      {{likes}}
+    </span>
+    <span class='info__item'>
+      <b>Views</b>
+      {{views}}
+    </span>
+    <span class='info__item'>
+      <b>Comments</b>
+      {{comments}}
+    </span>
+    <span class='info__item'>
+      <b>Downloads</b>
+      {{downloads}}
+    </span>
+  </div>
+</div>

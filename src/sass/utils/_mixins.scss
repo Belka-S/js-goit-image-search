@@ -2,17 +2,6 @@
   outline: solid 1px tomato;
 }
 
-@mixin title {
-  margin-bottom: 20px;
-
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.14;
-
-  color: $primary-bg-color;
-}
-
 @mixin retina {
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
