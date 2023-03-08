@@ -8,9 +8,12 @@ export let modal = new SimpleLightbox(
   {
     captionSelector: 'span',
     captionType: 'text',
-    captionDelay: 250,
+    captionDelay: 1000,
     scrollZoom: false,
     close: false,
+    navText: ['&#9194', '&#9193'],
+    overlayOpacity: 0.7,
+    // download: true,
   },
   addEventListener('wheel', debounce(onWheel, 100))
 );

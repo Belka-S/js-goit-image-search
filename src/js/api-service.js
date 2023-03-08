@@ -13,24 +13,18 @@ export class ImageApiService {
 
   #refs;
 
-  constructor({
-    type = 'all',
-    orientation = 'all',
-    safesearch = false,
-    perPage = 39,
-    formSelector = '#search-form',
-    inputName = 'searchQuery',
-    divSelector = '.gallery',
-  }) {
-    this.#refs = {
-      searchForm: document.querySelector(`${formSelector}`),
-      inputEl: document.querySelector(`${formSelector}`)[inputName],
-      galleryDiv: document.querySelector(`${divSelector}`),
-      loadMoreBtn: null,
-    };
+  constructor({ type = 'all', orientation = 'all', safesearch = false }) {
+    this.searchOptions = { type, orientation, safesearch, perPage: 30 };
     this.page = 0;
     this.normalData = [];
-    this.searchOptions = { type, orientation, safesearch, perPage };
+    this.#refs = {
+      controlsEl: document.querySelector('section.controls'),
+      searchForm: document.querySelector('#search-form'),
+      inputEl: document.querySelector('#search-form input'),
+      radioForm: document.querySelector('#radio-form'),
+      galleryDiv: document.querySelector('.gallery'),
+      loadMoreBtn: null,
+    };
   }
 
   async fetchImages() {
@@ -53,7 +47,7 @@ export class ImageApiService {
       if (!data.hits.length) {
         notifyFoundNothing();
       } else {
-        this.page === 1 && notifySearchSucces(data.totalHits);
+        notifySearchSucces(data.hits.length * this.page);
         this.normalizeData(data);
         return this.normalData;
       }
@@ -67,13 +61,25 @@ export class ImageApiService {
       this.normalData.push({
         webformatURL: hit.webformatURL,
         largeImageURL: hit.largeImageURL,
-        tags: hit.tags,
-        likes: hit.likes,
-        views: hit.views,
+        tags: this.normalizeNumber(hit.tags),
+        likes: this.normalizeNumber(hit.likes),
+        views: this.normalizeNumber(hit.views),
         comments: hit.comments,
-        downloads: hit.downloads,
+        downloads: this.normalizeNumber(hit.downloads),
       });
     });
+  }
+
+  normalizeNumber(number) {
+    const mln = Math.floor(number / 1000000);
+    const thou = Math.floor(number / 1000);
+    if (mln >= 1) {
+      return `${mln},${thou - mln * 1000}k`;
+    }
+    if (thou >= 1) {
+      return `${thou}k`;
+    }
+    return `${number}`;
   }
 
   set refs(newRefs) {

@@ -3,7 +3,9 @@
 body {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 0.01em;
-  color: #000000;
+
+  color: #ffffff;
+  background-color: #000b1d;
 }
 
 .container {
@@ -13,20 +15,11 @@ body {
   padding: 0 15px;
   position: relative;
 
-  @media screen and (min-width: 414px) {
-    // max-width: 384px;
-    max-width: 414px;
-  }
-
   @media screen and (min-width: 1024px) {
-    // max-width: 930px;
-    max-width: 1024px;
-    padding: 0 25px;
+    padding: 0 30px;
   }
 
   @media screen and (min-width: 1280px) {
-    // max-width: 1110px;
-    max-width: 1280px;
     padding: 0 50px;
   }
 }

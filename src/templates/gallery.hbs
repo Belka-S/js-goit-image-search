@@ -1,4 +1,5 @@
-{{! createMarkup Function }}
+{{! imageMarkup function }}
+
 <div class='gallery__item'>
   <a class='gallery__link' href='{{largeImageURL}}'>
     <img
@@ -7,13 +8,20 @@
       alt='{{tags}}'
       loading='lazy'
     />
-    <span class='is-hidden'>Likes
+    <span class='is-hidden'><b>Likes</b>
+      ⁣
       {{likes}}
-      - - - Views
+      ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣
+      <b>Views</b>
+      ⁣
       {{views}}
-      - - - Comments
+      ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣
+      <b>Comments</b>
+      ⁣
       {{comments}}
-      - - - Downloads
+      ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣
+      <b>Downloads</b>
+      ⁣
       {{downloads}}</span>
   </a>
   <div class='info'>
