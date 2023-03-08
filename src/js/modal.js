@@ -4,7 +4,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 // Create SimpleLightbox
 export let modal = new SimpleLightbox(
-  `.gallery a`, // photoApiService.refs.galleryDiv.className = gallery;
+  `.gallery a`,
   {
     captionSelector: 'span',
     captionType: 'text',
@@ -13,7 +13,6 @@ export let modal = new SimpleLightbox(
     close: false,
     navText: ['&#9194', '&#9193'],
     overlayOpacity: 0.7,
-    // download: true,
   },
   addEventListener('wheel', debounce(onWheel, 100))
 );
@@ -26,5 +25,5 @@ function onWheel(e) {
 }
 
 export function refreshSimpleLightbox() {
-  modal.refresh();
+  window.innerWidth > 550 && modal.refresh();
 }
