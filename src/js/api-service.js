@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { notifyFoundNothing, notifySearchSucces } from './notify';
+import { renderControlsMarkup } from './markup';
 
 export class ImageApiService {
   static BASE_URL = 'https://pixabay.com/api';
@@ -74,7 +75,7 @@ export class ImageApiService {
     const mln = Math.floor(number / 1000000);
     const thou = Math.floor(number / 1000);
     if (mln >= 1) {
-      return `${mln},${thou - mln * 1000}k`;
+      return `${mln},${Math.round((thou - mln * 1000) / 100)}m`;
     }
     if (thou >= 1) {
       return `${thou}k`;
@@ -89,3 +90,18 @@ export class ImageApiService {
     return this.#refs;
   }
 }
+
+// Create PhotoApiService
+function createPhotoApiService(options) {
+  renderControlsMarkup();
+  return new ImageApiService(options);
+}
+
+const options = {
+  type: 'photo',
+  orientation: 'horizontal',
+  safesearch: true,
+};
+
+export const photoApiService = createPhotoApiService(options);
+export const { searchOptions, refs } = photoApiService;

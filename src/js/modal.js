@@ -2,7 +2,6 @@ import { debounce } from 'lodash';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// Create SimpleLightbox
 export let modal = new SimpleLightbox(
   `.gallery a`,
   {

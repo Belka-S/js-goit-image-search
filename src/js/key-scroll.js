@@ -1,4 +1,5 @@
-import { refs, createGallery } from '../index';
+import { refs } from './api-service';
+import { createGallery } from './on-action';
 import { modal } from './modal';
 
 // Scroll by ArrowKeys

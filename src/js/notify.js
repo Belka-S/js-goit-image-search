@@ -8,23 +8,20 @@ const options = {
   width: '40vmin',
 };
 
-function notifyFoundNothing() {
+export function notifyFoundNothing() {
   const message =
     'Sorry, there are no images matching your search query. Please try again.';
   Notify.failure(message, options);
 }
 
-function notifySearchEnd() {
+export function notifySearchEnd() {
   const message = "We're sorry, but you've reached the end of search results.";
   Notify.failure(message, options);
 }
 
-function notifySearchSucces(totalHits) {
+export function notifySearchSucces(totalHits) {
   Notify.success(`Hooray! We found ${totalHits} images.`, options);
 }
 
-const startNotifyLoading = () => Loading.pulse();
-const endNotifyLoading = () => Loading.remove();
-
-export { notifyFoundNothing, notifySearchSucces, notifySearchEnd };
-export { startNotifyLoading, endNotifyLoading };
+export const startNotifyLoading = () => Loading.pulse();
+export const endNotifyLoading = () => Loading.remove();

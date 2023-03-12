@@ -1,9 +1,9 @@
-import { photoApiService, refs, createGallery } from '../index';
+import { photoApiService, refs } from './api-service';
+import { createGallery } from './on-action';
+import { notifySearchEnd } from './notify';
 import imageMarkup from '../templates/gallery.hbs';
 import controlsMarkup from '../templates/controls.hbs';
-import { notifySearchEnd } from './notify';
 
-// Render Controls Markup
 export function renderControlsMarkup() {
   const bodyEl = document.querySelector('script');
   bodyEl.insertAdjacentHTML('beforebegin', controlsMarkup());
@@ -16,7 +16,7 @@ export function renderGalleryMarkup(data) {
 }
 
 // Create LoadMore Button
-function createLoadMoreBtn() {
+export function renderLoadMoreBtn() {
   if (refs.loadMoreBtn) {
     return;
   }
@@ -27,7 +27,7 @@ function createLoadMoreBtn() {
 }
 
 // Remove LoadMore Button
-function removeLoadMoreBtn() {
+export function removeLoadMoreBtn() {
   refs.loadMoreBtn.remove();
   refs.loadMoreBtn.removeEventListener('click', createGallery);
   refs.loadMoreBtn = null;
@@ -35,5 +35,3 @@ function removeLoadMoreBtn() {
   const { page, normalData, searchOptions } = photoApiService;
   normalData.length !== page * searchOptions.perPage && notifySearchEnd();
 }
-
-export { createLoadMoreBtn, removeLoadMoreBtn };
