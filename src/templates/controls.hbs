@@ -1,29 +1,50 @@
 {{! controlsMarkup function }}
 
 <section class='controls container'>
-  <div class='controls__wrap'>
-    <form class='radio-form' id='radio-form'>
-      <span>Load</span>
-      <input id='first' type='radio' name='load-limit' value='30' checked />
-      <label for='first'>30</label>
-      <input id='second' type='radio' name='load-limit' value='90' />
-      <label for='second'>90</label>
-      <input id='third' type='radio' name='load-limit' value='150' />
-      <label for='third'>150</label>
-      <input id='endless' type='radio' name='load-limit' value='162' />
-      <label for='endless'>endless</label>
-    </form>
-    <form class='search-form' id='search-form'>
-      <input
-        class='search'
-        type='text'
-        name='image-query'
-        autocomplete='off'
-        placeholder='Image query...'
-      />
-      <button class='search' type='submit'>Search</button>
-    </form>
-  </div>
+  <form class='option-form' id='option-form'>
+    {{! Safesearch }}
+    <label class='option-form__label' for='safe'>Safe...
+      <input type='checkbox' id='safe' />
+      <span class='option-form__span'></span>
+    </label>
+    {{! Image type }}
+    <label class='option-form__label' for='type'>Image type...
+      <select id='type'>
+        <option value='all'>all</option>
+        <option value='photo'>photo</option>
+        <option value='illustration'>illustration</option>
+        <option value='vector'>vector</option>
+      </select>
+    </label>
+    {{! Image orientation }}
+    <label class='option-form__label' for='orientation'>Orientation...
+      <select id='orientation'>
+        <option value='all'>all</option>
+        <option value='horizontal'>horizontal</option>
+        <option value='vertical'>vertical</option>
+      </select>
+    </label>
+    {{! Load limit }}
+    <label class='option-form__label' for='loading'>Loading...
+      <select id='loading'>
+        <option value='30'>30</option>
+        <option value='60'>60</option>
+        <option value='150'>150</option>
+        <option id='endless' value='162'>endless</option>
+      </select>
+    </label>
+
+  </form>
+  <form class='search-form' id='search-form'>
+    <input
+      class='search'
+      type='text'
+      name='image-query'
+      autocomplete='off'
+      placeholder='Image query...'
+    />
+    <button class='search' type='submit'>Search</button>
+  </form>
 </section>
 
 <div class='gallery container'></div>

@@ -27,7 +27,8 @@ export function createGallery() {
     .then(refreshSimpleLightbox)
     .then(loadMoreOnScroll)
     .catch(removeLoadMoreBtn)
-    .finally(endNotifyLoading);
+    .finally(endNotifyLoading)
+    .finally(console.log(photoApiService)); // delete
 }
 
 export function setLoadLimit(e) {
@@ -39,7 +40,10 @@ export function getLoadLimit(e) {
   if (localStorage.getItem('perPage')) {
     searchOptions.perPage = localStorage.getItem('perPage');
 
-    refs.radioForm
+    refs.optionForm.querySelector('#load-options').value =
+      localStorage.getItem('perPage');
+
+    refs.optionForm
       .querySelector(`[value='${searchOptions.perPage}']`)
       .setAttribute('checked', true);
   }

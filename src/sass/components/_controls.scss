@@ -9,6 +9,9 @@
 
   @media screen and (min-width: 690px) {
     padding: 20px 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   background-image: linear-gradient(
@@ -18,62 +21,94 @@
   );
   transition: transform 300ms linear;
 
-  &__wrap {
-    padding: 0 30px;
-
-    @media screen and (min-width: 690px) {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-    }
-  }
-
   &.hidden-up {
     transform: translateY(-100%);
   }
 }
 
-// Form elements
-.radio-form {
-  @media screen and (max-width: 690px) {
-    margin-bottom: 10px;
-  }
-}
-
 .search-form,
-.radio-form {
+.option-form {
   display: flex;
-  align-items: baseline;
   justify-content: space-around;
 
   @media screen and (min-width: 690px) {
-    width: 43%;
+    width: 45%;
   }
 
-  & label,
-  & span {
-    padding: 8px;
-    width: 100%;
+  &__label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: 0.02em;
-  }
 
-  & label {
-    cursor: pointer;
+    & select {
+      background-color: transparent;
+      color: white;
+      text-align: center;
+      border-color: transparent;
+      outline: transparent;
+      cursor: pointer;
+      border-radius: 10px;
+
+      &:hover,
+      &:focus {
+        outline: 2px solid #fab914;
+        color: #fab914;
+      }
+
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+    }
+  }
+}
+
+.option-form {
+  @media screen and (max-width: 690px) {
+    margin-bottom: 10px;
   }
 
   & input {
+    opacity: 0;
+    width: 0;
+    height: 0;
     appearance: none;
 
-    &::before {
+    &:checked + .option-form__span:after {
+      position: absolute;
+      bottom: 1px;
+      left: 1px;
       content: '';
-      border: 1px solid #089c9c;
+      width: 38px;
+      height: 18px;
+      border-radius: 9px;
+      background-color: teal;
+    }
+  }
+
+  &__span {
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      outline: 2px solid #fab914;
+      outline-offset: 1px;
     }
 
-    &:checked + label {
-      color: #ffd774;
+    &:after {
+      position: absolute;
+      bottom: 1px;
+      left: 1px;
+      content: '';
+      width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      background-color: teal;
     }
   }
 }
@@ -105,13 +140,11 @@ button {
     background-color: #089c9c;
     transition: background-color 250ms linear, border-color 250ms linear;
 
-    &:hover {
-      background-color: teal;
-    }
-
+    &:hover,
     &:focus {
-      background-color: #008080;
-      border-color: #fab914;
+      background-color: teal;
+      outline: 2px solid #fab914;
+      outline-offset: 1px;
     }
 
     &.more {
@@ -129,7 +162,8 @@ input {
 
     &:hover,
     &:focus {
-      border-color: #fab914;
+      outline: 2px solid #fab914;
+      outline-offset: 1px;
     }
   }
 }

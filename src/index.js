@@ -7,8 +7,8 @@ import { setLoadLimit, getLoadLimit } from './js/on-action';
 import { searchData, onSpaceStroke, onArrowStroke } from './js/on-action';
 
 // Set Loadind Limit
-refs.radioForm.addEventListener('input', setLoadLimit);
 addEventListener('load', getLoadLimit, { once: true });
+refs.optionForm.addEventListener('input', setLoadLimit);
 
 // Search Data // Create Gallery
 refs.searchForm.addEventListener('submit', searchData);

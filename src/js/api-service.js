@@ -5,7 +5,7 @@ import { renderControlsMarkup } from './markup';
 export class ImageApiService {
   static BASE_URL = 'https://pixabay.com/api';
   static API_KEY = '34106733-e100dcdc1add944a5aa3c5584';
-  static SAEARCH_PARAMETERS = {
+  static SAEARCH_OPTIONS = {
     type: ['all', 'photo', 'illustration', 'vector'],
     orientation: ['all', 'horizontal', 'vertical'],
     safesearch: [true, false],
@@ -22,7 +22,7 @@ export class ImageApiService {
       controlsEl: document.querySelector('section.controls'),
       searchForm: document.querySelector('#search-form'),
       inputEl: document.querySelector('#search-form input'),
-      radioForm: document.querySelector('#radio-form'),
+      optionForm: document.querySelector('#option-form'),
       galleryDiv: document.querySelector('.gallery'),
       loadMoreBtn: null,
     };
@@ -98,6 +98,7 @@ function createPhotoApiService(options) {
 }
 
 const options = {
+  // delete
   type: 'photo',
   orientation: 'horizontal',
   safesearch: true,
