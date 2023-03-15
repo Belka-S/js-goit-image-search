@@ -11,7 +11,8 @@ export let modal = new SimpleLightbox(
     scrollZoom: false,
     close: false,
     navText: ['&#9194', '&#9193'],
-    overlayOpacity: 0.7,
+    overlayOpacity: 0.8,
+    // overlay: false,
   },
   addEventListener('wheel', debounce(onWheel, 100))
 );

@@ -1,12 +1,12 @@
-import { photoApiService, refs } from './api-service';
+import { imageApiService, refs } from './api-service';
 import { createGallery } from './on-action';
 import { notifySearchEnd } from './notify';
 import imageMarkup from '../templates/gallery.hbs';
 import controlsMarkup from '../templates/controls.hbs';
 
-export function renderControlsMarkup() {
+export function renderControlsMarkup(options) {
   const bodyEl = document.querySelector('script');
-  bodyEl.insertAdjacentHTML('beforebegin', controlsMarkup());
+  bodyEl.insertAdjacentHTML('beforebegin', controlsMarkup(options));
 }
 
 // Render Gallery Markup
@@ -32,6 +32,6 @@ export function removeLoadMoreBtn() {
   refs.loadMoreBtn.removeEventListener('click', createGallery);
   refs.loadMoreBtn = null;
 
-  const { page, normalData, searchOptions } = photoApiService;
+  const { page, normalData, searchOptions } = imageApiService;
   normalData.length !== page * searchOptions.perPage && notifySearchEnd();
 }

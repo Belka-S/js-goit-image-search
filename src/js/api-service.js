@@ -8,14 +8,24 @@ export class ImageApiService {
   static SAEARCH_OPTIONS = {
     type: ['all', 'photo', 'illustration', 'vector'],
     orientation: ['all', 'horizontal', 'vertical'],
-    safesearch: [true, false],
-    per_page: [3, 200],
+    safeSearch: [true, false],
+    perpage: [3, 200],
   };
 
   #refs;
 
-  constructor({ type = 'all', orientation = 'all', safesearch = false }) {
-    this.searchOptions = { type, orientation, safesearch, perPage: 30 };
+  constructor({
+    type = 'all',
+    orientation = 'all',
+    safeSearch = false,
+    perPage = 30,
+  }) {
+    this.searchOptions = {
+      type,
+      orientation,
+      safeSearch,
+      perPage,
+    };
     this.page = 0;
     this.normalData = [];
     this.#refs = {
@@ -31,7 +41,7 @@ export class ImageApiService {
   async fetchImages() {
     const url = ImageApiService.BASE_URL;
     const key = ImageApiService.API_KEY;
-    const { type, orientation, safesearch, perPage } = this.searchOptions;
+    const { type, orientation, safeSearch, perPage } = this.searchOptions;
     const searchQuery = this.refs.inputEl.value.trim().split(/\s+/).join('+');
 
     this.page += 1;
@@ -40,7 +50,7 @@ export class ImageApiService {
       // const response = await fetch(
       const response = await axios.get(
         `${url}/?key=${key}&q=${searchQuery}` +
-          `&image_type=${type}&orientation=${orientation}&safesearch=${safesearch}` +
+          `&image_type=${type}&orientation=${orientation}&safesearch=${safeSearch}` +
           `&page=${this.page}&per_page=${perPage}`
       );
       // const data = await response.json();
@@ -91,18 +101,14 @@ export class ImageApiService {
   }
 }
 
-// Create PhotoApiService
-function createPhotoApiService(options) {
-  renderControlsMarkup();
+// Create ImageApiService
+function createImageApiService() {
+  const localStorageValue = localStorage.getItem('search-options');
+  const options = localStorageValue ? JSON.parse(localStorageValue) : {};
+
+  renderControlsMarkup(options);
   return new ImageApiService(options);
 }
 
-const options = {
-  // delete
-  type: 'photo',
-  orientation: 'horizontal',
-  safesearch: true,
-};
-
-export const photoApiService = createPhotoApiService(options);
-export const { searchOptions, refs } = photoApiService;
+export const imageApiService = createImageApiService();
+export const { searchOptions, refs } = imageApiService;

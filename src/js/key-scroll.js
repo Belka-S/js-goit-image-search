@@ -63,7 +63,7 @@ export function loadMoreOnSpase(keyEvent) {
 // Endless Scrolling
 export const io = new IntersectionObserver(
   entries => {
-    refs.optionForm.querySelector('#endless').getAttribute('checked') &&
+    refs.optionForm.loading.value === '162' &&
       entries[0].isIntersecting &&
       createGallery();
   },

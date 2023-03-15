@@ -2,9 +2,14 @@
 
 <section class='controls container'>
   <form class='option-form' id='option-form'>
-    {{! Safesearch }}
+    {{! Safe Search }}
     <label class='option-form__label' for='safe'>Safe...
-      <input type='checkbox' id='safe' />
+      {{#if safeSearch}}
+        <input type='checkbox' id='safe' checked />
+      {{/if}}
+      {{#unless safeSearch}}
+        <input type='checkbox' id='safe' />
+      {{/unless}}
       <span class='option-form__span'></span>
     </label>
     {{! Image type }}

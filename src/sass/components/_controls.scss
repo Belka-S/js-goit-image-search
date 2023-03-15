@@ -8,7 +8,7 @@
   padding: 10px 0 20px;
 
   @media screen and (min-width: 690px) {
-    padding: 20px 0 40px;
+    padding: 16px 0 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +19,7 @@
     rgba(0, 11, 29, 0.8) 75%,
     rgba(0, 11, 29, 0) 100%
   );
-  transition: transform 300ms linear;
+  transition: transform 300ms;
 
   &.hidden-up {
     transform: translateY(-100%);
@@ -32,7 +32,7 @@
   justify-content: space-around;
 
   @media screen and (min-width: 690px) {
-    width: 45%;
+    width: 42%;
   }
 
   &__label {
@@ -41,6 +41,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    color: #b5b5b5;
 
     & select {
       background-color: transparent;
@@ -50,11 +51,13 @@
       outline: transparent;
       cursor: pointer;
       border-radius: 10px;
+      transition: color 250ms, outline 250ms, background-color 250ms;
 
       &:hover,
       &:focus {
         outline: 2px solid #fab914;
         color: #fab914;
+        // background-color: teal;
       }
 
       font-weight: 700;
@@ -66,25 +69,7 @@
 
 .option-form {
   @media screen and (max-width: 690px) {
-    margin-bottom: 10px;
-  }
-
-  & input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    appearance: none;
-
-    &:checked + .option-form__span:after {
-      position: absolute;
-      bottom: 1px;
-      left: 1px;
-      content: '';
-      width: 38px;
-      height: 18px;
-      border-radius: 9px;
-      background-color: teal;
-    }
+    margin-bottom: 6px;
   }
 
   &__span {
@@ -93,6 +78,7 @@
     border-radius: 10px;
     background-color: white;
     cursor: pointer;
+    transition: background-color 250ms, left 250ms, outline 100ms;
 
     &:hover,
     &:focus {
@@ -100,7 +86,7 @@
       outline-offset: 1px;
     }
 
-    &:after {
+    &:before {
       position: absolute;
       bottom: 1px;
       left: 1px;
@@ -108,7 +94,27 @@
       width: 18px;
       height: 18px;
       border-radius: 9px;
-      background-color: teal;
+      background-color: #089c9c;
+      transition: background-color 250ms, left 250ms;
+    }
+  }
+
+  & input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    appearance: none;
+
+    &:checked + .option-form__span {
+      background-color: #089c9c;
+    }
+
+    &:checked + .option-form__span:before {
+      width: 18px;
+      height: 18px;
+      left: 21px;
+      background-color: #ffd774;
+      transition: background-color 250ms, left 250ms;
     }
   }
 }
@@ -138,7 +144,7 @@ button {
 
     color: #ffd774;
     background-color: #089c9c;
-    transition: background-color 250ms linear, border-color 250ms linear;
+    transition: background-color 250ms, outline 250ms;
 
     &:hover,
     &:focus {
@@ -159,6 +165,7 @@ input {
     @extend %btn;
 
     text-align: center;
+    transition: outline 250ms;
 
     &:hover,
     &:focus {

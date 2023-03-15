@@ -1,4 +1,4 @@
-import { photoApiService, searchOptions, refs } from './api-service';
+import { imageApiService, searchOptions, refs } from './api-service';
 import { renderGalleryMarkup } from './markup';
 import { renderLoadMoreBtn, removeLoadMoreBtn } from './markup';
 import { modal, refreshSimpleLightbox } from './modal';
@@ -11,8 +11,8 @@ export function searchData(e) {
     top: 0,
     behavior: 'smooth',
   });
-  photoApiService.normalData = [];
-  photoApiService.page = 0;
+  imageApiService.normalData = [];
+  imageApiService.page = 0;
 
   createGallery();
 }
@@ -20,32 +20,51 @@ export function searchData(e) {
 export function createGallery() {
   startNotifyLoading();
 
-  photoApiService
+  imageApiService
     .fetchImages()
     .then(renderGalleryMarkup)
     .then(renderLoadMoreBtn)
     .then(refreshSimpleLightbox)
     .then(loadMoreOnScroll)
     .catch(removeLoadMoreBtn)
-    .finally(endNotifyLoading)
-    .finally(console.log(photoApiService)); // delete
+    .finally(endNotifyLoading);
 }
 
-export function setLoadLimit(e) {
-  searchOptions.perPage = e.target.value;
-  localStorage.setItem('perPage', e.target.value);
+export function setSearchOptions(e) {
+  switch (e.target.id) {
+    case 'safe':
+      searchOptions.safeSearch = e.target.checked;
+      break;
+
+    case 'type':
+      searchOptions.type = e.target.value;
+      e.target
+        .querySelector(`[value='${e.target.value}']`)
+        .setAttribute('checked', true);
+      break;
+
+    case 'orientation':
+      searchOptions.orientation = e.target.value;
+      e.target
+        .querySelector(`[value='${e.target.value}']`)
+        .setAttribute('checked', true);
+      break;
+
+    case 'loading':
+      searchOptions.perPage = e.target.value;
+      e.target
+        .querySelector(`[value='${e.target.value}']`)
+        .setAttribute('checked', true);
+      break;
+  }
+  localStorage.setItem('search-options', JSON.stringify(searchOptions));
 }
 
-export function getLoadLimit(e) {
-  if (localStorage.getItem('perPage')) {
-    searchOptions.perPage = localStorage.getItem('perPage');
-
-    refs.optionForm.querySelector('#load-options').value =
-      localStorage.getItem('perPage');
-
-    refs.optionForm
-      .querySelector(`[value='${searchOptions.perPage}']`)
-      .setAttribute('checked', true);
+export function getSearchOptions(e) {
+  if (localStorage.getItem('search-options')) {
+    refs.optionForm.type.value = searchOptions.type;
+    refs.optionForm.orientation.value = searchOptions.orientation;
+    refs.optionForm.loading.value = searchOptions.perPage;
   }
 }
 
