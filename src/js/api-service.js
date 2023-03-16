@@ -2,6 +2,7 @@ import axios from 'axios';
 import { notifyFoundNothing, notifySearchSucces } from './notify';
 import { renderControlsMarkup } from './markup';
 
+// Create Class ImageApiService
 export class ImageApiService {
   static BASE_URL = 'https://pixabay.com/api';
   static API_KEY = '34106733-e100dcdc1add944a5aa3c5584';
@@ -101,7 +102,7 @@ export class ImageApiService {
   }
 }
 
-// Create ImageApiService
+// Create Instance of ImageApiService
 function createImageApiService() {
   const localStorageValue = localStorage.getItem('search-options');
   const options = localStorageValue ? JSON.parse(localStorageValue) : {};

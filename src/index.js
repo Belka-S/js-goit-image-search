@@ -13,11 +13,11 @@ refs.optionForm.addEventListener('input', setSearchOptions);
 // Search Data // Create Gallery
 refs.searchForm.addEventListener('submit', searchData);
 
-// Scroll by ArrowKeys
+// Scroll by ArrowKeysStroke
 addEventListener('keydown', onArrowStroke);
 
 // Move Header on Scroll
 onscroll = debounce(e => moveHeader(), 100);
 
-// Load More on Space
+// Load More on SpaceStroke
 addEventListener('keydown', onSpaceStroke);
