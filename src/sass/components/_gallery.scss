@@ -101,3 +101,33 @@ div.sl-caption.pos-bottom {
   text-decoration: none;
   font-size: 0px;
 }
+
+.sl-wrapper {
+  background-color: rgba(0, 11, 29, 0.85);
+
+  & .sl-image div.sl-caption {
+    background-color: rgba(0, 11, 29, 0.85);
+  }
+}
+
+.sl-navigation {
+  & .sl-prev::before {
+    content: '‹‹';
+    left: 15px;
+  }
+
+  & .sl-next::before {
+    content: '››';
+    right: 15px;
+  }
+
+  & .sl-prev::before,
+  .sl-next::before {
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    border-radius: 25px;
+    color: #ffd774;
+    background-color: #089c9c;
+  }
+}

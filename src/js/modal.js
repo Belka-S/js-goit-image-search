@@ -10,9 +10,8 @@ export let modal = new SimpleLightbox(
     captionDelay: 1000,
     scrollZoom: false,
     close: false,
-    navText: ['&#9194', '&#9193'],
-    overlayOpacity: 0.8,
-    // overlay: false,
+    // navText: ['&#9194', '&#9193'],
+    overlayOpacity: 0.1,
   },
   addEventListener('wheel', debounce(onWheel, 100))
 );
