@@ -1,4 +1,4 @@
-import { imageApiService, refs } from './api-service';
+import { imageApiService, refs } from '../index';
 import { createGallery } from './on-action';
 import { notifySearchEnd } from './notify';
 import imageMarkup from '../templates/gallery.hbs';

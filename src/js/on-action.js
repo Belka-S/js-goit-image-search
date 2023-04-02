@@ -1,4 +1,4 @@
-import { imageApiService, searchOptions, refs } from './api-service';
+import { imageApiService, searchOptions, refs } from '../index';
 import { renderGalleryMarkup } from './markup';
 import { renderLoadMoreBtn, removeLoadMoreBtn } from './markup';
 import { modal, refreshSimpleLightbox } from './modal';
@@ -45,7 +45,7 @@ export function setSearchOptions(e) {
         .setAttribute('checked', true);
       break;
   }
-  
+
   localStorage.setItem('search-options', JSON.stringify(searchOptions));
 }
 

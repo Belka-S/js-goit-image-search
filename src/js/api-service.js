@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { notifyFoundNothing, notifySearchSucces } from './notify';
-import { renderControlsMarkup } from './markup';
+
 
 // Create Class ImageApiService
 export class ImageApiService {
@@ -101,15 +101,3 @@ export class ImageApiService {
     return this.#refs;
   }
 }
-
-// Create Instance of ImageApiService
-function createImageApiService() {
-  const localStorageValue = localStorage.getItem('search-options');
-  const options = localStorageValue ? JSON.parse(localStorageValue) : {};
-
-  renderControlsMarkup(options);
-  return new ImageApiService(options);
-}
-
-export const imageApiService = createImageApiService();
-export const { searchOptions, refs } = imageApiService;

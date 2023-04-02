@@ -1,4 +1,4 @@
-import { refs } from './api-service';
+import { refs } from '../index';
 import { createGallery } from './on-action';
 import { modal } from './modal';
 
